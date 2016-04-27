@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
      private int step = 12;
      private boolean alive = true;
 	 public Enemy(int x, int y) {
-         super(x, y, 6, 14);
+         super(x, y, 7, 15);
  
     }
  
@@ -26,6 +26,5 @@ import java.awt.Graphics2D;
          g.fillRect(x, y, width, height);
  
      }
- 
      
  } 

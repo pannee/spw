@@ -15,13 +15,11 @@ public class Main{
 		GamePanel gp = new GamePanel();
 		GameEngine engine = new GameEngine(gp, v);
 		
-		Enemy e = new Enemy(50, 50);
- 		gp.sprites.add(e);
- 		gp.updateGameUI();
 		
 		frame.getContentPane().add(gp, BorderLayout.CENTER);
 		
 		
 		frame.setVisible(true);
+		engine.start();
 	}
 }
