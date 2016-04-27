@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 
 public class Main{
@@ -15,7 +14,11 @@ public class Main{
 		SpaceShip v = new SpaceShip(180, 500, 20, 20);
 		GamePanel gp = new GamePanel();
 		GameEngine engine = new GameEngine(gp, v);
-		gp.updateGameUI();
+		
+		Enemy e = new Enemy(50, 50);
+ 		gp.sprites.add(e);
+ 		gp.updateGameUI();
+		
 		frame.getContentPane().add(gp, BorderLayout.CENTER);
 		
 		
