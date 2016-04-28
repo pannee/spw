@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -56,7 +58,13 @@ import javax.swing.Timer;
  			
  			while(e_iter.hasNext()){
  				Enemy e = e_iter.next();
- 				score += 100;
+ 				e.proceed();
+				
+ 				if(!e.isAlive()){
+ 					e_iter.remove();
+					gp.sprites.remove(e);
+					score += 0;
+ 				}
  				
  			}
  		
@@ -69,7 +77,9 @@ import javax.swing.Timer;
  				
  			}
  	}
+ 	
  	public long getScore(){
  		return score;
  	}
+	
 }
