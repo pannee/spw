@@ -63,7 +63,7 @@ import javax.swing.Timer;
  				if(!e.isAlive()){
  					e_iter.remove();
 					gp.sprites.remove(e);
-					score += 0;
+					score += 100;
  				}
  				
  			}
@@ -74,24 +74,26 @@ import javax.swing.Timer;
  			Rectangle2D.Double er;
  			for(Enemy e : enemies){
  				er = e.getRectangle();
- 				
- 			}
+ 				if(er.intersects(vr)){
+				return;
+			}
+ 		}
  	}
+ 	
  	void controlVehicle(KeyEvent e) {
  		switch (e.getKeyCode()) {
  
 	case KeyEvent.VK_LEFT:
  			v.move(-1);
  			break;
- 		case KeyEvent.VK_RIGHT:
+ 	case KeyEvent.VK_RIGHT:
  			v.move(1);
  			break;
- 		case KeyEvent.VK_D:
+ 	case KeyEvent.VK_D:
  			difficulty += 0.1;				
  			break;
  		
  		}
- 
  		
  	}
  	public long getScore(){
