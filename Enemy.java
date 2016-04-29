@@ -26,12 +26,11 @@ import java.awt.Graphics2D;
          g.fillRect(x, y, width, height);
  
      }
-      public void proceed(){
-       	y += step;
-       
-     }
+     public void proceed(){
+       	y += step;   
+   }
    
-      public boolean isAlive(){
-       	return alive;
-   	}
+   public boolean isAlive(){
+       return alive;
+   }
  } 

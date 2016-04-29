@@ -9,7 +9,7 @@ import java.util.Iterator;
 import javax.swing.Timer;
  
  
- public class GameEngine implements GameReporter{
+ public class GameEngine implements KeyListener,GameReporter{
  	GamePanel gp;
  		
  	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();	
@@ -77,9 +77,39 @@ import javax.swing.Timer;
  				
  			}
  	}
- 	
+ 	void controlVehicle(KeyEvent e) {
+ 		switch (e.getKeyCode()) {
+ 
+	case KeyEvent.VK_LEFT:
+ 			v.move(-1);
+ 			break;
+ 		case KeyEvent.VK_RIGHT:
+ 			v.move(1);
+ 			break;
+ 		case KeyEvent.VK_D:
+ 			difficulty += 0.1;				
+ 			break;
+ 		
+ 		}
+ 
+ 		
+ 	}
  	public long getScore(){
  		return score;
  	}
-	
+	@Override
+ 	public void keyPressed(KeyEvent e) {
+ 		controlVehicle(e);
+ 	
+ 	}
+ 
+ 	@Override
+ 	public void keyReleased(KeyEvent e) {
+ 		//do nothing
+ 	}
+ 
+ 	@Override
+ 	public void keyTyped(KeyEvent e) {
+ 		//do nothing		
+ 	}
 }
