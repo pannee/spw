@@ -9,31 +9,33 @@ import java.awt.Graphics2D;
  
      private int step = 12;
      private boolean alive = true;
-	 public Enemy(int x, int y) {
+	   public Enemy(int x, int y) {
          super(x, y, 7, 15);
  
     }
  
      @Override
+
      public void draw(Graphics2D g) {
+
         if (y < Y_TO_FADE) {
              g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-         } else {
-             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
-                     (float) (Y_TO_DIE - y) / (Y_TO_DIE - Y_TO_FADE)));
+         } 
+        else {
+             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,(float) (Y_TO_DIE - y) / (Y_TO_DIE - Y_TO_FADE)));
          }
          g.setColor(Color.RED);
          g.fillRect(x, y, width, height);
  
      }
-      public void proceed(){
-       	y += step;
-        if(y > Y_TO_DIE){
+     public void proceed(){
+        y += step;
+      	if(y > Y_TO_DIE){
            alive = false;
       }
-     }
+   }
    
-      public boolean isAlive(){
-       	return alive;
-   	}
+     public boolean isAlive(){
+       return alive;
+      }
  } 

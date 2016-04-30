@@ -9,7 +9,7 @@ import java.util.Iterator;
 import javax.swing.Timer;
  
  
- public class GameEngine implements GameReporter{
+ public class GameEngine implements KeyListener,GameReporter{
  	GamePanel gp;
  		
  	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();	
@@ -63,7 +63,7 @@ import javax.swing.Timer;
  				if(!e.isAlive()){
  					e_iter.remove();
 					gp.sprites.remove(e);
-					score += 0;
+					score += 100;
  				}
  				
  			}
@@ -74,12 +74,53 @@ import javax.swing.Timer;
  			Rectangle2D.Double er;
  			for(Enemy e : enemies){
  				er = e.getRectangle();
- 				
+ 				if(er.intersects(vr)){
+					die();
+					return;
+				}
  			}
  	}
- 	
+ 	public void die(){
+		timer.stop();
+	}
+ 	void controlVehicle(KeyEvent e) {
+ 		switch (e.getKeyCode()) {
+ 
+			case KeyEvent.VK_LEFT:
+ 				v.move(-1,0);
+ 				break;
+ 			case KeyEvent.VK_RIGHT:
+ 				v.move(1,0);
+ 				break;
+ 			case KeyEvent.VK_UP:
+ 				v.move(0, -1);
+ 				break;
+ 			case KeyEvent.VK_DOWN:
+ 				v.move(0, 1);
+  				break;
+ 			case KeyEvent.VK_D:
+ 				difficulty += 0.1;				
+ 				break;
+ 		
+ 		}
+ 		
+ 	}
  	public long getScore(){
  		return score;
  	}
-	
+	@Override
+ 	public void keyPressed(KeyEvent e) {
+ 		controlVehicle(e);
+ 	
+ 	}
+ 
+ 	@Override
+ 	public void keyReleased(KeyEvent e) {
+ 		//do nothing
+ 	}
+ 
+ 	@Override
+ 	public void keyTyped(KeyEvent e) {
+ 		//do nothing		
+ 	}
 }

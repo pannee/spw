@@ -17,12 +17,17 @@ public class SpaceShip extends Sprite{
 		
 	}
 
-	public void move(int direction){
-		x += (step * direction);
-		if(x < 0)
-			x = 0;
-		if(x > 400 - width)
-			x = 400 - width;
-	}
-
+	public void move(int xdirection, int ydirection){
+ 		x += (step * xdirection);
+ 		if(x < 0) 
+ 		   x = 0;
+ 		if(x > 400 - width) 
+ 		   x = 400 - width;
+ 		
+ 		y += (step * ydirection);
+ 		if(y < 0) 
+ 		   y = 0;
+ 		if(y > 550 - height) 
+ 		   y = 550 - height;
+  	}
 }
