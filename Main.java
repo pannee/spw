@@ -15,10 +15,11 @@ public class Main{
 		GamePanel gp = new GamePanel();
 		GameEngine engine = new GameEngine(gp, v);
 		
-		frame.addKeyListener(engine);
-		frame.getContentPane().add(gp, BorderLayout.CENTER);
-		frame.setVisible(true);
 		
+		frame.getContentPane().add(gp, BorderLayout.CENTER);
+		
+		
+		frame.setVisible(true);
 		engine.start();
 	}
 }
